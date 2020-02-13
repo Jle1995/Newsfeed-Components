@@ -112,3 +112,49 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createData(newTitle, newDate, newFirstParagraph, newSecondParagraph, newThirdParagraph){
+
+    //Create a new element
+    const newData = document.createElement('div');
+    const dataTitle = document.createElement('h2');
+    const dataDate = document.createElement('p');
+    const dataFirstParagraph = document.createElement('p');
+    const dataSecondParagraph = document.createElement('p');
+    const dataThirdParagraph = document.createElement('p');
+    const buttonData = document.createElement('span');
+
+    //Setup the structure of elements
+    newData.appendChild(dataTitle);
+    newData.appendChild(dataDate);
+    newData.appendChild(dataFirstParagraph);
+    newData.appendChild(dataSecondParagraph);
+    newData.appendChild(dataThirdParagraph);
+    newData.appendChild(buttonData);
+
+    //Set class names
+    newData.classList.add('article');
+    dataDate.classList.add('date');
+    dataFirstParagraph.classList.add('first-paragraph');
+    dataSecondParagraph.classList.add('second-paragraph');
+    dataThirdParagraph.classList.add('third-paragraph');
+    buttonData.classList.add('expandButton');
+
+    //Set text elements
+    dataTitle.textContent = newTitle;
+    dataDate.textContent = newDate;
+    dataFirstParagraph.textContent = newFirstParagraph;
+    dataSecondParagraph.textContent = newSecondParagraph;
+    dataThirdParagraph.textContent = newThirdParagraph;
+    buttonData.textContent = 'Button';
+
+    //Adding an event listener
+    buttonData.addEventListener('click', function (event) {
+        //event.function('click')  
+        newData.classList.toggle('article-open');
+    });
+
+    return newData;
+}
+
+data.forEach(article => document.querySelector('.articles').appendChild(createData(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph)));
